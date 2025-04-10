@@ -369,6 +369,181 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAuditorAuditor extends Struct.CollectionTypeSchema {
+  collectionName: 'auditores';
+  info: {
+    description: '';
+    displayName: 'Auditores';
+    pluralName: 'auditores';
+    singularName: 'auditor';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Cargo: Schema.Attribute.String & Schema.Attribute.Required;
+    Codigo: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Credenciales: Schema.Attribute.String & Schema.Attribute.Required;
+    Especialidad: Schema.Attribute.String & Schema.Attribute.Required;
+    Foto: Schema.Attribute.Media<'images' | 'files'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::auditor.auditor'
+    > &
+      Schema.Attribute.Private;
+    Nombre: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    Rut: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
+export interface ApiEmpresaEmpresa extends Struct.CollectionTypeSchema {
+  collectionName: 'empresas';
+  info: {
+    description: '';
+    displayName: 'Empresas';
+    pluralName: 'empresas';
+    singularName: 'empresa';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Administrador: Schema.Attribute.String;
+    Codigo: Schema.Attribute.String & Schema.Attribute.Required;
+    Contrato: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Expeditor: Schema.Attribute.String;
+    Faena: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    Localidad: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::empresa.empresa'
+    > &
+      Schema.Attribute.Private;
+    Logo: Schema.Attribute.Media<'images' | 'files'>;
+    Nombre: Schema.Attribute.String & Schema.Attribute.Required;
+    Operadores: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::operador.operador'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    Representante: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiInformesAcreditacionDeCompetenciaInformesAcreditacionDeCompetencia
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'informes_acreditacion_de_competencias';
+  info: {
+    description: '';
+    displayName: 'Informe_acreditacion';
+    pluralName: 'informes-acreditacion-de-competencias';
+    singularName: 'informes-acreditacion-de-competencia';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    base_informe: Schema.Attribute.Component<'informes.base-informe', false>;
+    codigo_auditor: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    evaluacion_practica: Schema.Attribute.String;
+    evaluacion_teorica: Schema.Attribute.String;
+    evaluador: Schema.Attribute.String;
+    fecha_evaluacion: Schema.Attribute.Date;
+    gestion_de_control: Schema.Attribute.Component<
+      'informes.resumen-informe',
+      false
+    >;
+    habilitacion: Schema.Attribute.Component<'informes.resumen-informe', false>;
+    habitos_operacionales: Schema.Attribute.Component<
+      'informes.resumen-informe',
+      false
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::informes-acreditacion-de-competencia.informes-acreditacion-de-competencia'
+    > &
+      Schema.Attribute.Private;
+    nombre_auditor: Schema.Attribute.String;
+    observacion: Schema.Attribute.String;
+    procedimiento_general: Schema.Attribute.Component<
+      'informes.resumen-informe',
+      false
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    rut_auditor: Schema.Attribute.String;
+    rut_evaluador: Schema.Attribute.String;
+    scan_documento: Schema.Attribute.Media<'images' | 'files', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiOperadorOperador extends Struct.CollectionTypeSchema {
+  collectionName: 'operadores';
+  info: {
+    description: '';
+    displayName: 'Operadores';
+    pluralName: 'operadores';
+    singularName: 'operador';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Cargo: Schema.Attribute.String;
+    Codigo_Empresa: Schema.Attribute.String;
+    Contrato: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Empresa: Schema.Attribute.Relation<'manyToOne', 'api::empresa.empresa'>;
+    Estado: Schema.Attribute.String;
+    Faena: Schema.Attribute.String;
+    Fecha_acreditacion: Schema.Attribute.Date;
+    Fecha_habilitacion: Schema.Attribute.Date;
+    Fecha_ingreso: Schema.Attribute.Date;
+    Foto: Schema.Attribute.Media<'images'>;
+    Licencia_municipal: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::operador.operador'
+    > &
+      Schema.Attribute.Private;
+    Nombre: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    Rut: Schema.Attribute.String & Schema.Attribute.Required;
+    Turno: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -824,9 +999,9 @@ export interface PluginUsersPermissionsUser
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
+    auditor: Schema.Attribute.Relation<'oneToOne', 'api::auditor.auditor'>;
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
@@ -878,6 +1053,10 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::auditor.auditor': ApiAuditorAuditor;
+      'api::empresa.empresa': ApiEmpresaEmpresa;
+      'api::informes-acreditacion-de-competencia.informes-acreditacion-de-competencia': ApiInformesAcreditacionDeCompetenciaInformesAcreditacionDeCompetencia;
+      'api::operador.operador': ApiOperadorOperador;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

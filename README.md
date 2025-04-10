@@ -1,61 +1,59 @@
-# 🚀 Getting started with Strapi
+## Sobre el proyecto
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+Existen 6 tipos de informes o categorías dentro del proyecto:
 
-### `develop`
+1. Acreditación de competencias
+2. Hábitos operacionales
+3. Gestión y mantención 
+4. Talleres 
+5. Informe maquinarias 
+6. Requisitos complementarios
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
 
-```
-npm run develop
-# or
-yarn develop
-```
+##### Modulos:
 
-### `start`
+Esos son conjutos de datos agrupados en módulos con una estructura que se repite através de los diferentes informes.
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
 
-```
-npm run start
-# or
-yarn start
-```
+1. base_informe: 
+El primer módulo dinámico que se repetirá es el de "base_informe" Este módulo contiene el template de los datos que tienen todos los informes,
+es decir, los datos del auditor, de la empresa a evaluar, el nombre del informe, la fecha entre otros.
 
-### `build`
+2. resumen_informe:
 
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
+Este módulo corresponde a los resumenes de cada categoría de la auditoría y consta de 3 elementos que se repiten
 
-```
-npm run build
-# or
-yarn build
-```
+- CONFORME	
+- NO CONFORME	
+- CON OBSERVACIONES	
+- NO APLICA 
 
-## ⚙️ Deployment
+Cuandos e adjunta en la costrucción del tipo de contenido, se permite uno solo por cada uno, ya que es un resumen por cada tipo de categoría de la auditoría, ejemplo:
 
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
+1 Modulo de resumen para PROCEDIMIENTO GENERAL		
+1 Módulo de resumen para HABILITACION		
 
-```
-yarn strapi deploy
-```
 
-## 📚 Learn more
+si se permitieran varios, sería muchos resumenes con el mismo nombre a modo de ejemplo 5 de PROCEDIMIENTO GENERAL y en la estructura esta forma es la incorrecta.
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
+Todo resumen tiene diferentes requerimientos que en base a la evaluación de los requerimientos, el auditor llenará el resumen.
 
-## ✨ Community
 
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+3. Requerimiento:
+Este componente tiene 
+nombre del requerimiento.
+valor del requerimiento: [cumple, no cumple, oportunidad de mejora, no aplica].
+Comentario
+Recomendación
+Archivos
 
----
 
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+4. Requerimiento: singular un nobre y su valor es booleano, el módulo requerimientos consta de varios "requerimiento"
+
+
+
+
+
+
+

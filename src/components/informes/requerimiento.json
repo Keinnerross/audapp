@@ -1,0 +1,41 @@
+{
+  "collectionName": "components_informes_requerimientos",
+  "info": {
+    "displayName": "requerimientos",
+    "icon": "pin",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "nombre_requerimiento": {
+      "type": "text",
+      "unique": false,
+      "required": false
+    },
+    "calificacion": {
+      "type": "enumeration",
+      "enum": [
+        "cumple",
+        "no cumple",
+        "oportunidad de mejora",
+        "no aplica"
+      ]
+    },
+    "archivos": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "recomendacion": {
+      "type": "text"
+    },
+    "comentario": {
+      "type": "text"
+    }
+  }
+}

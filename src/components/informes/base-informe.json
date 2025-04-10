@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_informes_base_informes",
+  "info": {
+    "displayName": "base_informe",
+    "icon": "puzzle",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "auditor": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::auditor.auditor"
+    },
+    "nombre_informe": {
+      "type": "string"
+    },
+    "fecha_informe": {
+      "type": "date"
+    },
+    "pdf_informe": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "empresa": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::empresa.empresa"
+    }
+  }
+}

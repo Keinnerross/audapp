@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "auditores",
+  "info": {
+    "singularName": "auditor",
+    "pluralName": "auditores",
+    "displayName": "Auditores",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Nombre": {
+      "type": "string",
+      "required": true
+    },
+    "Rut": {
+      "type": "string",
+      "required": true
+    },
+    "Cargo": {
+      "type": "string",
+      "required": true
+    },
+    "Especialidad": {
+      "type": "string",
+      "required": true
+    },
+    "Foto": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "Credenciales": {
+      "type": "string",
+      "required": true
+    },
+    "Codigo": {
+      "type": "string"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "auditor"
+    }
+  }
+}

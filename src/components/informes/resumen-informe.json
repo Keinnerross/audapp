@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_informes_resumen_informes",
+  "info": {
+    "displayName": "resumen_informe",
+    "icon": "puzzle",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "observaciones": {
+      "type": "text",
+      "required": false
+    },
+    "requerimiento": {
+      "displayName": "requerimiento",
+      "type": "component",
+      "repeatable": true,
+      "component": "informes.requerimiento"
+    },
+    "calificacion": {
+      "type": "enumeration",
+      "enum": [
+        "conforme",
+        "no conforme",
+        "con observaciones",
+        "no aplica"
+      ]
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "kind": "collectionType",
+  "collectionName": "operadores",
+  "info": {
+    "singularName": "operador",
+    "pluralName": "operadores",
+    "displayName": "Operadores",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Empresa": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::empresa.empresa",
+      "inversedBy": "Operadores"
+    },
+    "Codigo_Empresa": {
+      "type": "string"
+    },
+    "Contrato": {
+      "type": "string"
+    },
+    "Faena": {
+      "type": "string"
+    },
+    "Nombre": {
+      "type": "string",
+      "required": true
+    },
+    "Rut": {
+      "type": "string",
+      "required": true
+    },
+    "Licencia_municipal": {
+      "type": "string"
+    },
+    "Cargo": {
+      "type": "string"
+    },
+    "Turno": {
+      "type": "string"
+    },
+    "Fecha_ingreso": {
+      "type": "date"
+    },
+    "Fecha_habilitacion": {
+      "type": "date"
+    },
+    "Estado": {
+      "type": "string"
+    },
+    "Fecha_acreditacion": {
+      "type": "date"
+    },
+    "Foto": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "kind": "collectionType",
+  "collectionName": "empresas",
+  "info": {
+    "singularName": "empresa",
+    "pluralName": "empresas",
+    "displayName": "Empresas",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nombre": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {}
+    },
+    "Codigo": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {}
+    },
+    "Contrato": {
+      "type": "string",
+      "pluginOptions": {}
+    },
+    "Faena": {
+      "type": "string",
+      "pluginOptions": {}
+    },
+    "Localidad": {
+      "type": "string",
+      "pluginOptions": {}
+    },
+    "Administrador": {
+      "type": "string",
+      "pluginOptions": {}
+    },
+    "Expeditor": {
+      "type": "string",
+      "pluginOptions": {}
+    },
+    "Representante": {
+      "type": "string",
+      "pluginOptions": {}
+    },
+    "Operadores": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::operador.operador",
+      "mappedBy": "Empresa"
+    },
+    "Logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    }
+  }
+}
