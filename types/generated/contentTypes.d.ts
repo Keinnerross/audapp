@@ -449,6 +449,38 @@ export interface ApiEmpresaEmpresa extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiInformeInforme extends Struct.CollectionTypeSchema {
+  collectionName: 'informes';
+  info: {
+    description: '';
+    displayName: 'Informes';
+    pluralName: 'informes';
+    singularName: 'informe';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    categoria: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    fecha: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::informe.informe'
+    > &
+      Schema.Attribute.Private;
+    nombre: Schema.Attribute.String;
+    PDF: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiInformesAcreditacionDeCompetenciaInformesAcreditacionDeCompetencia
   extends Struct.CollectionTypeSchema {
   collectionName: 'informes_acreditacion_de_competencias';
@@ -1055,6 +1087,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::auditor.auditor': ApiAuditorAuditor;
       'api::empresa.empresa': ApiEmpresaEmpresa;
+      'api::informe.informe': ApiInformeInforme;
       'api::informes-acreditacion-de-competencia.informes-acreditacion-de-competencia': ApiInformesAcreditacionDeCompetenciaInformesAcreditacionDeCompetencia;
       'api::operador.operador': ApiOperadorOperador;
       'plugin::content-releases.release': PluginContentReleasesRelease;

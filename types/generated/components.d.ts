@@ -11,8 +11,8 @@ export interface InformesBaseInforme extends Struct.ComponentSchema {
     auditor: Schema.Attribute.Relation<'oneToOne', 'api::auditor.auditor'>;
     empresa: Schema.Attribute.Relation<'oneToOne', 'api::empresa.empresa'>;
     fecha_informe: Schema.Attribute.Date;
+    informe: Schema.Attribute.Relation<'oneToOne', 'api::informe.informe'>;
     nombre_informe: Schema.Attribute.String;
-    pdf_informe: Schema.Attribute.Media<'files'>;
   };
 }
 

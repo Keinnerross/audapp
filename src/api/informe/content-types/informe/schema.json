@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "informes",
+  "info": {
+    "singularName": "informe",
+    "pluralName": "informes",
+    "displayName": "Informes",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "categoria": {
+      "type": "string"
+    },
+    "PDF": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "fecha": {
+      "type": "date"
+    },
+    "nombre": {
+      "type": "string"
+    }
+  }
+}

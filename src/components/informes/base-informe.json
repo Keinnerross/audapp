@@ -18,18 +18,15 @@
     "fecha_informe": {
       "type": "date"
     },
-    "pdf_informe": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "files"
-      ]
-    },
     "empresa": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::empresa.empresa"
+    },
+    "informe": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::informe.informe"
     }
   }
 }
