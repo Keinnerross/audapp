@@ -1,74 +1,40 @@
+// ================================
+// 📁 backend/src/api/.../pdf-generator.js
+// ================================
+
 'use strict';
 
 const puppeteer = require('puppeteer');
+const ejs = require('ejs');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const FormData = require('form-data');
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
-function generarSeccion(nombre, data = {}) {
-  if (!data?.requerimiento?.length) return '';
-  return `
-    <h2>${nombre}</h2>
-    ${data.requerimiento
-      .map(
-        (req, idx) => `
-        <div style="margin-bottom: 20px;">
-          <h4>${idx + 1}) ${req.nombre_requerimiento}</h4>
-          <p><strong>Calificación:</strong> ${req.calificacion}</p>
-          <p><strong>Comentario:</strong> ${req.comentario}</p>
-          <p><strong>Recomendación:</strong> ${req.recomendacion}</p>
-          ${
-            req.archivos?.length
-              ? `<p><strong>Archivo:</strong> ${req.archivos[0].name || 'Imagen adjunta'}</p>`
-              : ''
-          }
-        </div>`
-      )
-      .join('')}
-    <hr/>
-  `;
-}
-
 module.exports = {
   async generarPDF(datos) {
-    const html = `
-      <html>
-        <head>
-          <style>
-            body { font-family: Arial, sans-serif; padding: 2rem; }
-            h1 { color: #005077; }
-            p { font-size: 14px; }
-            h2 { margin-top: 30px; color: #444; }
-            hr { margin-top: 20px; margin-bottom: 20px; }
-          </style>
-        </head>
-        <body>
-          <h1>${datos.base_informe?.nombre_informe}</h1>
-          <p><strong>Auditor:</strong> ${datos.nombre_auditor}</p>
-          <p><strong>Empresa:</strong> ${datos.base_informe?.empresa}</p>
+    try {
+      const templatePath = path.join(__dirname, '../../../templates/informes/acreditacion_competencias/informe.ejs');
+      const html = await ejs.renderFile(templatePath, { datos });  //Envío de datos al template.
 
-          ${generarSeccion('Procedimiento General', datos.procedimiento_general)}
-          ${generarSeccion('Hábitos Operacionales', datos.habitos_operacionales)}
-          ${generarSeccion('Gestión de Control', datos.gestion_de_control)}
-          ${generarSeccion('Habilitación', datos.habilitacion)}
-        </body>
-      </html>
-    `;
+      console.log(datos)
 
-    const browser = await puppeteer.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    });
+      const browser = await puppeteer.launch({
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      });
 
-    const page = await browser.newPage();
-    await page.setContent(html, { waitUntil: 'networkidle0' });
+      const page = await browser.newPage();
+      await page.setContent(html, { waitUntil: 'networkidle0' });
+      const buffer = await page.pdf({ format: 'A4', printBackground: true });
 
-    const buffer = await page.pdf({ format: 'A4', printBackground: true });
-
-    await browser.close();
-    return buffer;
+      await browser.close();
+      return buffer;
+    } catch (err) {
+      console.error('❌ Error al generar PDF:', err);
+      throw new Error('Error generando el PDF');
+    }
   },
 
   async subirPDF(buffer, nombre = 'informe') {
@@ -111,3 +77,4 @@ module.exports = {
     }
   },
 };
+

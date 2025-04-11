@@ -8,7 +8,7 @@ export interface InformesBaseInforme extends Struct.ComponentSchema {
     icon: 'puzzle';
   };
   attributes: {
-    auditor: Schema.Attribute.Relation<'oneToOne', 'api::auditor.auditor'>;
+    auditor: Schema.Attribute.Relation<'oneToMany', 'api::auditor.auditor'>;
     empresa: Schema.Attribute.Relation<'oneToOne', 'api::empresa.empresa'>;
     fecha_informe: Schema.Attribute.Date;
     informe: Schema.Attribute.Relation<'oneToOne', 'api::informe.informe'>;

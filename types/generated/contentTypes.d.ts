@@ -462,6 +462,7 @@ export interface ApiInformeInforme extends Struct.CollectionTypeSchema {
   };
   attributes: {
     categoria: Schema.Attribute.String;
+    codigo_informe: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

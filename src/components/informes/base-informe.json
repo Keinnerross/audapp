@@ -9,7 +9,7 @@
   "attributes": {
     "auditor": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::auditor.auditor"
     },
     "nombre_informe": {
