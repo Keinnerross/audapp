@@ -1,7 +1,3 @@
-// ================================
-// 📁 backend/src/api/.../pdf-generator.js
-// ================================
-
 'use strict';
 
 const puppeteer = require('puppeteer');
@@ -16,9 +12,9 @@ module.exports = {
   async generarPDF(datos) {
     try {
       const templatePath = path.join(__dirname, '../../../templates/informes/acreditacion_competencias/informe.ejs');
-      const html = await ejs.renderFile(templatePath, { datos });  //Envío de datos al template.
+      const html = await ejs.renderFile(templatePath, { datos }); // ⬅ renderizamos con datos
 
-      console.log(datos)
+      console.log('📄 Generando PDF con los siguientes datos:', datos);
 
       const browser = await puppeteer.launch({
         headless: true,
@@ -27,7 +23,17 @@ module.exports = {
 
       const page = await browser.newPage();
       await page.setContent(html, { waitUntil: 'networkidle0' });
-      const buffer = await page.pdf({ format: 'A4', printBackground: true });
+
+      const buffer = await page.pdf({
+        format: 'letter',
+        printBackground: true,
+        margin: {
+          top: '15mm',
+          bottom: '20mm',
+          left: '20mm',
+          right: '20mm',
+        },
+      });
 
       await browser.close();
       return buffer;
@@ -77,4 +83,3 @@ module.exports = {
     }
   },
 };
-

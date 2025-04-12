@@ -83,11 +83,6 @@ module.exports = createCoreController(
           datosParaPDF.base_informe.empresa_nombre = '—';
         }
 
-
-
-
-        console.log(datosParaPDF)
-
         // 5. Generar PDF
         const buffer = await strapi
           .service('api::informes-acreditacion-de-competencia.pdf-generator')
@@ -113,16 +108,34 @@ module.exports = createCoreController(
           },
         });
 
+
+        console.log("Nuevo informe creado:", nuevoInforme);
+
+
         // 8. Relacionar informe al componente
+
+        const entry = await strapi.entityService.findOne(
+          'api::informes-acreditacion-de-competencia.informes-acreditacion-de-competencia',
+          idAcreditacion,
+          { populate: ['base_informe'] }
+        );
+
+        const baseActual = entry.base_informe || {};
+
         const updatedEntry = await strapi.entityService.update(
           'api::informes-acreditacion-de-competencia.informes-acreditacion-de-competencia',
           idAcreditacion,
           {
             data: {
-              'base_informe.informe': nuevoInforme.documentId,
-            },
+              base_informe: {
+                ...baseActual, //Esto es necesario actualizarlo así pq si no actualizaría todo el componente.
+                informe: nuevoInforme.documentId, 
+              }
+            }
           }
         );
+
+        console.log(updatedEntry)
 
         // 9. Retornar respuesta
         return ctx.send({

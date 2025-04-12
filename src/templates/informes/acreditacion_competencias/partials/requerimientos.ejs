@@ -1,0 +1,47 @@
+<!-- Wrapper para evitar cortes entre título y sus requerimientos -->
+<div class="bloque-seccion-completa">
+
+  <div class="section-header text-center">
+    <%= title || 'Título de sección' %>
+  </div>
+
+  <% const simbolos = {
+    'cumple': 'C',
+    'no cumple': 'NC',
+    'oportunidad de mejora': 'OP',
+    'no aplica': 'NA',
+  }; %>
+
+  <% if (data.requerimiento.length === 0) { %>
+    <p class="requerimiento-empty">
+      No se encontraron requerimientos en esta sección.
+    </p>
+  <% } else { %>
+
+    <% data.requerimiento.forEach((item, index) => { %>
+      <div class="bloque-requerimiento">
+        <p class="requerimiento-title">
+          <%= `${index + 1}) ${item.nombre_requerimiento || '—'}` %>
+        </p>
+
+        <table class="requerimiento-table">
+          <thead>
+            <tr>
+              <th>Requisito</th>
+              <th>Observación</th>
+              <th>Recomendaciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= simbolos[item.calificacion] || '—' %></td>
+              <td><%= item.comentario || '—' %></td>
+              <td><%= item.recomendacion || '—' %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <% }) %>
+
+  <% } %>
+</div>
