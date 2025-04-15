@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_informe_acreditacion_acreditacion_competencias",
+  "info": {
+    "displayName": "acreditacion_competencias",
+    "icon": "gate"
+  },
+  "options": {},
+  "attributes": {
+    "operador": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::operador.operador"
+    },
+    "fecha_evaluacion": {
+      "type": "date"
+    },
+    "fecha_evaluacion_teorica": {
+      "type": "date"
+    },
+    "fecha_evaluacion_practica": {
+      "type": "date"
+    },
+    "evaluador": {
+      "type": "string"
+    },
+    "rut_evaluador": {
+      "type": "string"
+    },
+    "observaciones": {
+      "type": "string"
+    },
+    "scan_documento": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

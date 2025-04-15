@@ -31,46 +31,15 @@
       "repeatable": false,
       "component": "informes.resumen-informe"
     },
+    "acreditacion_competencias": {
+      "type": "component",
+      "repeatable": true,
+      "component": "informe-acreditacion.acreditacion-competencias"
+    },
     "habitos_operacionales": {
       "type": "component",
-      "repeatable": false,
-      "component": "informes.resumen-informe"
-    },
-    "codigo_auditor": {
-      "type": "string"
-    },
-    "nombre_auditor": {
-      "type": "string"
-    },
-    "rut_auditor": {
-      "type": "string"
-    },
-    "fecha_evaluacion": {
-      "type": "date"
-    },
-    "evaluacion_teorica": {
-      "type": "string"
-    },
-    "evaluacion_practica": {
-      "type": "string"
-    },
-    "evaluador": {
-      "type": "string"
-    },
-    "rut_evaluador": {
-      "type": "string"
-    },
-    "observacion": {
-      "type": "string"
-    },
-    "scan_documento": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files"
-      ]
+      "repeatable": true,
+      "component": "informe-acreditacion.habitos-operacionales"
     }
   }
 }

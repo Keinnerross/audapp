@@ -495,23 +495,22 @@ export interface ApiInformesAcreditacionDeCompetenciaInformesAcreditacionDeCompe
     draftAndPublish: true;
   };
   attributes: {
+    acreditacion_competencias: Schema.Attribute.Component<
+      'informe-acreditacion.acreditacion-competencias',
+      true
+    >;
     base_informe: Schema.Attribute.Component<'informes.base-informe', false>;
-    codigo_auditor: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    evaluacion_practica: Schema.Attribute.String;
-    evaluacion_teorica: Schema.Attribute.String;
-    evaluador: Schema.Attribute.String;
-    fecha_evaluacion: Schema.Attribute.Date;
     gestion_de_control: Schema.Attribute.Component<
       'informes.resumen-informe',
       false
     >;
     habilitacion: Schema.Attribute.Component<'informes.resumen-informe', false>;
     habitos_operacionales: Schema.Attribute.Component<
-      'informes.resumen-informe',
-      false
+      'informe-acreditacion.habitos-operacionales',
+      true
     >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -519,16 +518,11 @@ export interface ApiInformesAcreditacionDeCompetenciaInformesAcreditacionDeCompe
       'api::informes-acreditacion-de-competencia.informes-acreditacion-de-competencia'
     > &
       Schema.Attribute.Private;
-    nombre_auditor: Schema.Attribute.String;
-    observacion: Schema.Attribute.String;
     procedimiento_general: Schema.Attribute.Component<
       'informes.resumen-informe',
       false
     >;
     publishedAt: Schema.Attribute.DateTime;
-    rut_auditor: Schema.Attribute.String;
-    rut_evaluador: Schema.Attribute.String;
-    scan_documento: Schema.Attribute.Media<'images' | 'files', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_informe_acreditacion_habitos_operacionales",
+  "info": {
+    "displayName": "habitos_operacionales",
+    "icon": "chartBubble"
+  },
+  "options": {},
+  "attributes": {
+    "operador": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::operador.operador"
+    },
+    "fecha_acreditacion": {
+      "type": "date"
+    },
+    "fecha_vigencia_licencia_interna": {
+      "type": "date"
+    },
+    "resultado": {
+      "type": "text"
+    },
+    "habitos_operacionales_realizados": {
+      "type": "text"
+    },
+    "situacion_actual": {
+      "type": "string"
+    },
+    "conclusion_recomendacion": {
+      "type": "string"
+    }
+  }
+}
