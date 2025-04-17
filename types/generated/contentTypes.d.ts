@@ -495,9 +495,8 @@ export interface ApiInformesAcreditacionDeCompetenciaInformesAcreditacionDeCompe
     draftAndPublish: true;
   };
   attributes: {
-    acreditacion_competencias: Schema.Attribute.Component<
-      'informe-acreditacion.acreditacion-competencias',
-      true
+    acreditacion_competencias: Schema.Attribute.DynamicZone<
+      ['informe-acreditacion.acreditacion-competencias']
     >;
     base_informe: Schema.Attribute.Component<'informes.base-informe', false>;
     createdAt: Schema.Attribute.DateTime;
@@ -508,9 +507,8 @@ export interface ApiInformesAcreditacionDeCompetenciaInformesAcreditacionDeCompe
       false
     >;
     habilitacion: Schema.Attribute.Component<'informes.resumen-informe', false>;
-    habitos_operacionales: Schema.Attribute.Component<
-      'informe-acreditacion.habitos-operacionales',
-      true
+    habitos_operacionales: Schema.Attribute.DynamicZone<
+      ['informe-acreditacion.habitos-operacionales']
     >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<

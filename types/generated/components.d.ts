@@ -4,6 +4,7 @@ export interface InformeAcreditacionAcreditacionCompetencias
   extends Struct.ComponentSchema {
   collectionName: 'components_informe_acreditacion_acreditacion_competencias';
   info: {
+    description: '';
     displayName: 'acreditacion_competencias';
     icon: 'gate';
   };
@@ -26,6 +27,7 @@ export interface InformeAcreditacionHabitosOperacionales
   extends Struct.ComponentSchema {
   collectionName: 'components_informe_acreditacion_habitos_operacionales';
   info: {
+    description: '';
     displayName: 'habitos_operacionales';
     icon: 'chartBubble';
   };

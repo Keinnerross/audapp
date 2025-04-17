@@ -32,14 +32,16 @@
       "component": "informes.resumen-informe"
     },
     "acreditacion_competencias": {
-      "type": "component",
-      "repeatable": true,
-      "component": "informe-acreditacion.acreditacion-competencias"
+      "type": "dynamiczone",
+      "components": [
+        "informe-acreditacion.acreditacion-competencias"
+      ]
     },
     "habitos_operacionales": {
-      "type": "component",
-      "repeatable": true,
-      "component": "informe-acreditacion.habitos-operacionales"
+      "type": "dynamiczone",
+      "components": [
+        "informe-acreditacion.habitos-operacionales"
+      ]
     }
   }
 }

@@ -2,7 +2,8 @@
   "collectionName": "components_informe_acreditacion_habitos_operacionales",
   "info": {
     "displayName": "habitos_operacionales",
-    "icon": "chartBubble"
+    "icon": "chartBubble",
+    "description": ""
   },
   "options": {},
   "attributes": {

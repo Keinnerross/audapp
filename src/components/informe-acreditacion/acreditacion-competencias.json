@@ -2,7 +2,8 @@
   "collectionName": "components_informe_acreditacion_acreditacion_competencias",
   "info": {
     "displayName": "acreditacion_competencias",
-    "icon": "gate"
+    "icon": "gate",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -30,14 +31,15 @@
       "type": "string"
     },
     "scan_documento": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     }
   }
 }
