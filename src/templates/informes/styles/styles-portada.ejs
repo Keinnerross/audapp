@@ -1,0 +1,132 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .bg-container {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* 
+    .triangulo-gris {
+        width: 600px;
+        height: 1200px;
+        position: absolute;
+        top: -450px;
+        left: -200px;
+        background: linear-gradient(to bottom right, #666, #d3d3d3);
+        transform: rotate(45deg);
+        z-index: 10;
+    }
+
+    .triangulo-azul {
+        width: 150px;
+        height: 1200px;
+        position: absolute;
+        bottom: -600px;
+        left: -250px;
+        background: linear-gradient(to right, #c6def2, #a3c9e3);
+        transform: rotate(-45deg);
+    } */
+    .triangulos-svg {
+        object-fit: cover;
+        height: 100vh;
+        position: relative;
+    }
+
+
+    .triangulos {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+    }
+
+
+
+    .svgs{
+        position: absolute;
+        top: 0;
+        left: 0;
+
+    }
+    .contenido-portada {
+        width: 100vw;
+        height: 100vh;
+        padding: 20px;
+        position: absolute;
+        top: 0;
+        z-index: 500;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: space-between; */
+    }
+
+
+    #logo {
+        height: 33%;
+    }
+
+    .logo-container {
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .logo-andes {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+
+    }
+
+    #titulo_codigo {
+        width: 100%;
+        padding: 100px 0;
+        text-align: center;
+    }
+
+    #titulo_codigo h2 {
+        font-size: 42px;
+        font-weight: 500;
+        color: #408ad2;
+    }
+
+    #footer-description {
+        position: absolute;
+        bottom: 50px;
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+    }
+
+    .footer-one {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .footer-two {
+        max-width: 70%;
+        padding: 10px;
+        border: 1px solid black;
+    }
+
+    .lineas-container {
+        width: 80%;
+        position: absolute;
+        top: 0px;
+        right: -250px;
+        z-index: -1;
+        opacity: 0.9;
+    }
+</style>

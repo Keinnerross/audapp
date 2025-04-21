@@ -1,0 +1,57 @@
+<div class="bloque-seccion-completa">
+
+  <p class="title-operadores">
+    <%= data.length %> Operadores
+  </p>
+
+  <div class="section-header text-center">
+    <%= title || 'Título de sección' %>
+  </div>
+
+  <!-- Contenido de las tablas -->
+  <div class="tables-content">
+
+    <% data.forEach((item, index) => { %>
+      <table class="evaluacion-tabla">
+        <tr>
+          <td class="etiqueta">Nombre:</td>
+          <td>
+            <strong><%= item.operador_nombre || 'Pedro Infante' %>;</strong>
+            <strong>RUT: <%= item.rut_operador %></strong>
+          </td>
+        </tr>
+        <tr>
+          <td class="etiqueta">Evaluación teórica:</td>
+          <td><%= item.fecha_evaluacion_teorica_formateada %></td>
+        </tr>
+        <tr>
+          <td class="etiqueta">Evaluación práctica:</td>
+          <td><%= item.fecha_evaluacion_practica_formateada %></td>
+        </tr>
+        <tr>
+          <td class="etiqueta">Evaluador:</td>
+          <td><%= item.evaluador %></td>
+        </tr>
+        <tr>
+          <td class="etiqueta">Rut Evaluador:</td>
+          <td><strong><%= item.rut_evaluador %></strong></td>
+        </tr>
+        <tr>
+          <td class="etiqueta">Resultado:</td>
+          <td><%= item.observaciones %></td>
+        </tr>
+        <tr>
+          <td class="etiqueta">Documento:</td>
+          <td>
+            <% if (Array.isArray(item.scan_documento_urls)) { %>
+              <% item.scan_documento_urls.forEach((url, i) => { %>
+                <a href="<%= url %>" target="_blank">Documento <%= i + 1 %></a><% if (i < item.scan_documento_urls.length - 1) { %>, <% } %>
+              <% }); %>
+            <% } %>
+          </td>
+        </tr>
+      </table>
+    <% }); %>
+
+  </div>
+</div>

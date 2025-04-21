@@ -5,43 +5,72 @@
     <%= title || 'Título de sección' %>
   </div>
 
-  <% const simbolos = {
-    'cumple': 'C',
-    'no cumple': 'NC',
-    'oportunidad de mejora': 'OP',
-    'no aplica': 'NA',
-  }; %>
+  <% const simbolos={ 'cumple' : 'C' , 'no cumple' : 'NC' , 'oportunidad de mejora' : 'OP' , 'no aplica' : 'NA' , }; %>
 
-  <% if (data.requerimiento.length === 0) { %>
-    <p class="requerimiento-empty">
-      No se encontraron requerimientos en esta sección.
-    </p>
-  <% } else { %>
+    <% if (data.requerimiento.length===0) { %>
+      <p class="requerimiento-empty">
+        No se encontraron requerimientos en esta sección.
+      </p>
+      <% } else { %>
 
-    <% data.requerimiento.forEach((item, index) => { %>
-      <div class="bloque-requerimiento">
-        <p class="requerimiento-title">
-          <%= `${index + 1}) ${item.nombre_requerimiento || '—'}` %>
-        </p>
+        <% data.requerimiento.forEach((item, index)=> { %>
+          <div class="bloque-requerimiento">
 
-        <table class="requerimiento-table">
-          <thead>
-            <tr>
-              <th>Requisito</th>
-              <th>Observación</th>
-              <th>Recomendaciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><%= simbolos[item.calificacion] || '—' %></td>
-              <td><%= item.comentario || '—' %></td>
-              <td><%= item.recomendacion || '—' %></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    <% }) %>
+            <table class="requerimiento-table">
+              <thead>
+                <tr>
+                  <th>Requisito</th>
+                  <th>Clasificacion</th>
+                  <th>Comentario</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <%= item.nombre_requerimiento || '—' %>
+                  </td>
+                  <td>
+                    <%= simbolos[item.calificacion] || '—' %>
+                  </td>
+                  <td>
+                    <%= item.comentario || '—' %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
 
-  <% } %>
+            <table>
+              <thead>
+                <tr>
+                  <th>Recomendación</th>
+                </tr>
+              <tbody>
+                <tr>
+                  <td>
+                    <%= item.recomendacion || '—' %>
+                  </td>
+                </tr>
+            </table>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Evidencias</th>
+                </tr>
+              <tbody>
+                <tr>
+                  <td>
+                    <% if (Array.isArray(item.archivos_urls)) { %>
+                      <% item.archivos_urls.forEach((url, i)=> { %>
+                        <a href="<%= url %>" target="_blank">archivo <%= i + 1 %></a>
+                        <% if (i < item.archivos_urls - 1) { %>, <% } %>
+                            <% }); %>
+                              <% } %>
+                  </td>
+                </tr>
+            </table>
+          </div>
+          <% }) %>
+
+            <% } %>
 </div>

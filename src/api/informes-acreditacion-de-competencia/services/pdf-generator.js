@@ -25,13 +25,13 @@ module.exports = {
       await page.setContent(html, { waitUntil: 'networkidle0' });
 
       const buffer = await page.pdf({
-        format: 'letter',
+        format: 'A4',
         printBackground: true,
         margin: {
-          top: '15mm',
-          bottom: '20mm',
-          left: '20mm',
-          right: '20mm',
+          top: '0mm',
+          bottom: '0mm',
+          left: '0mm',
+          right: '0mm',
         },
       });
 
