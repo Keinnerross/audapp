@@ -1,0 +1,49 @@
+<div class="bloque-seccion-completa">
+
+    <p class="title-operadores">
+      <%= data.length %> Operadores
+    </p>
+  
+    <div class="section-header text-center">
+      <%= title || 'Título de sección' %>
+    </div>
+  
+    <!-- Contenido de las tablas -->
+    <div class="tables-content">
+  
+      <% data.forEach((item, index) => { %>
+        <table class="evaluacion-tabla">
+          <tr>
+            <td class="etiqueta">Nombre:</td>
+            <td>
+              <strong><%= item.operador_nombre || 'Pedro Infante' %>;</strong>
+              <strong>RUT: <%= item.rut_operador %></strong>
+            </td>
+          </tr>
+          <tr>
+            <td class="etiqueta">Fecha Acreditacion:</td>
+            <td><%= item.fecha_acreditacion_formateada %></td>
+          </tr>
+          <tr>
+            <td class="etiqueta">Fecha de vigilancia de licencia interna</td>
+            <td><%= item.fecha_vigencia_licencia_interna_formateada %></td>
+          </tr>
+          <tr>
+            <td class="etiqueta">Resultado:</td>
+            <td><%= item.resultado %></td>
+          </tr>
+          <tr>
+            <td class="etiqueta">Hábitos Operacionales realizados</td>
+            <td><strong><%= item.habitos_operacionales_realizados %></strong></td>
+          </tr>
+          <tr>
+            <td class="etiqueta">Situacion_actual:</td>
+            <td><%= item.situacion_actual %></td>
+          </tr>
+          
+        </table>
+      <% }); %>
+  
+    </div>
+  </div>
+  

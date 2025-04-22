@@ -9,7 +9,9 @@
       </tr>
       <tr>
         <td style="width: 35%; ">Código del Informe:</td>
-        <td><%= base_informe.codigo_informe %></td>
+        <td>
+          <%= base_informe.codigo_informe %>
+        </td>
       </tr>
       <tr>
         <td >Fecha:</td>
@@ -46,12 +48,7 @@
       </tr>
     </table>
   
-    <!-- Introducción -->
-    <div class="section-header">Introducción</div>
-    <p style="text-align: justify;">
-      La auditoría realizada el día <strong><%= base_informe.fecha_informe %></strong>, se llevó a cabo en las instalaciones del proyecto
-      <strong><%= base_informe.empresa_nombre %></strong>. Durante la actividad, se verificó el cumplimiento del ANEXO correspondiente y la gestión del mantenimiento de equipos y maquinarias.
-    </p>
+ 
   
   </div>
   

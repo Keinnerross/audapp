@@ -204,7 +204,7 @@ module.exports = createCoreController(
 
 
 
-        
+
         // 4.4 Reemplazar IDs de archivos y media por URLs absolutas de Strapi
 
         const baseURL = strapi.config.get('server.url') || 'http://localhost:1337';
@@ -384,7 +384,32 @@ module.exports = createCoreController(
           },
           habilitacion: {
             requerimiento: [], // 👈 también para evitar el mismo error
-          }
+          },
+
+          habitos_operacionales: [
+            {
+              __component: 'informe-acreditacion.habitos-operacionales',
+              operador: 'w3ajfakl0tlzzn86t15ccqzi',
+              rut_operador: '141510833',
+              fecha_acreditacion: '2025-04-22T00:00:00.000Z',
+              fecha_vigencia_licencia_interna: '2025-04-22T00:00:00.000Z',
+              resultado: 'seguro',
+              habitos_operacionales_realizados: 'si todo bien',
+              situacion_actual: 'Disponible',
+              conclusion_recomendacion: 'Ninguna'
+            },
+            {
+              __component: 'informe-acreditacion.habitos-operacionales',
+              operador: 'w3ajfakl0tlzzn86t15ccqzi',
+              rut_operador: '141510833',
+              fecha_acreditacion: '2025-04-22T00:00:00.000Z',
+              fecha_vigencia_licencia_interna: '2025-04-22T00:00:00.000Z',
+              resultado: 'seguro',
+              habitos_operacionales_realizados: 'si todo bien',
+              situacion_actual: 'Disponible',
+              conclusion_recomendacion: 'Ninguna'
+            }
+          ],
         };
 
 

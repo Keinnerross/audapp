@@ -1,76 +1,158 @@
-<!-- Wrapper para evitar cortes entre título y sus requerimientos -->
 <div class="bloque-seccion-completa">
 
-  <div class="section-header text-center">
+  <div class="section-header">
     <%= title || 'Título de sección' %>
   </div>
 
-  <% const simbolos={ 'cumple' : 'C' , 'no cumple' : 'NC' , 'oportunidad de mejora' : 'OP' , 'no aplica' : 'NA' , }; %>
+  <% const simbolos = {
+       'cumple': 'C',
+       'no cumple': 'NC',
+       'oportunidad de mejora': 'OP',
+       'no aplica': 'NA'
+     }; %>
 
-    <% if (data.requerimiento.length===0) { %>
-      <p class="requerimiento-empty">
-        No se encontraron requerimientos en esta sección.
-      </p>
+  <% const requerimientos = data.requerimiento || []; %>
+  <% const observables = requerimientos.filter(r => r.calificacion === 'no cumple' || r.calificacion === 'oportunidad de mejora'); %>
+  <% const totalCumple = requerimientos.filter(r => r.calificacion === 'cumple').length; %>
+  <% const totalNoCumple = requerimientos.filter(r => r.calificacion === 'no cumple').length; %>
+  <% const totalOP = requerimientos.filter(r => r.calificacion === 'oportunidad de mejora').length; %>
+
+  <% if (requerimientos.length === 0) { %>
+    <p class="requerimiento-empty">
+      ❌ No se encontraron requerimientos en esta sección.
+    </p>
+
+  <% } else if (observables.length === 0) { %>
+    <p class="requerimiento-empty">
+      ✅ Todos los requisitos han sido cumplidos o no aplican. No se registran observaciones en esta sección.
+    </p>
+
+  <% } else { %>
+
+    <% observables.forEach((item, index) => { %>
+      <div class="bloque-requerimiento">
+
+        <table class="requerimiento-table">
+          <thead>
+            <tr>
+              <th>Requisito</th>
+              <th>Clasificación</th>
+              <th>Comentario</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= item.nombre_requerimiento || '—' %></td>
+              <td><%= simbolos[item.calificacion] || '—' %></td>
+              <td><%= item.comentario || '—' %></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Recomendación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= item.recomendacion || '—' %></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Evidencias</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <% if (Array.isArray(item.archivos_urls)) { %>
+                  <% item.archivos_urls.forEach((url, i) => { %>
+                    <a href="<%= url %>" target="_blank">archivo <%= i + 1 %></a>
+                    <% if (i < item.archivos_urls.length - 1) { %>, <% } %>
+                  <% }); %>
+                <% } %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    <% }); %>
+
+  <% } %>
+
+  <div class="bloque-requerimiento">
+    <h3>Conclusión de la sección:</h3>
+
+    <p>
+      En la sección de <strong><%= title %></strong>, se evaluaron un total de 
+      <strong><%= requerimientos.length %></strong> requerimientos. Según los criterios establecidos, la calificación global fue 
+      <strong><%= data.calificacion || '—' %></strong>.
+    
+      <% if (data.calificacion === 'conforme') { %>
+        Esto refleja un cumplimiento satisfactorio de los requisitos auditados, sin observaciones relevantes en esta área.
+    
+      <% } else if (data.calificacion === 'con observaciones') { %>
+        Se identificaron aspectos que podrían ser mejorados, aunque no constituyen incumplimientos formales. Se sugiere seguimiento.
+    
+      <% } else if (data.calificacion === 'no conforme') { %>
+        Se detectaron incumplimientos significativos que deben ser abordados con prioridad para garantizar el cumplimiento de los estándares esperados.
+    
+      <% } else if (data.calificacion === 'no aplica') { %>
+        Esta sección no fue considerada en esta evaluación por no ser aplicable al contexto auditado.
+    
       <% } else { %>
+        La evaluación no arrojó una calificación definitiva para esta sección.
+      <% } %>
+    </p>
+    
 
-        <% data.requerimiento.forEach((item, index)=> { %>
-          <div class="bloque-requerimiento">
+    <table class="tabla-resumen">
+      <thead>
+        <tr>
+          <th>Totales</th>
+          <th>Clasificación</th>
+          <th>Comentario</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= totalCumple %></td>
+          <td>Conformes</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><%= totalNoCumple %></td>
+          <td>NO Conformes</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><%= totalOP %></td>
+          <td>Oportunidad de mejora</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-            <table class="requerimiento-table">
-              <thead>
-                <tr>
-                  <th>Requisito</th>
-                  <th>Clasificacion</th>
-                  <th>Comentario</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <%= item.nombre_requerimiento || '—' %>
-                  </td>
-                  <td>
-                    <%= simbolos[item.calificacion] || '—' %>
-                  </td>
-                  <td>
-                    <%= item.comentario || '—' %>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-            <table>
-              <thead>
-                <tr>
-                  <th>Recomendación</th>
-                </tr>
-              <tbody>
-                <tr>
-                  <td>
-                    <%= item.recomendacion || '—' %>
-                  </td>
-                </tr>
-            </table>
-
-            <table>
-              <thead>
-                <tr>
-                  <th>Evidencias</th>
-                </tr>
-              <tbody>
-                <tr>
-                  <td>
-                    <% if (Array.isArray(item.archivos_urls)) { %>
-                      <% item.archivos_urls.forEach((url, i)=> { %>
-                        <a href="<%= url %>" target="_blank">archivo <%= i + 1 %></a>
-                        <% if (i < item.archivos_urls - 1) { %>, <% } %>
-                            <% }); %>
-                              <% } %>
-                  </td>
-                </tr>
-            </table>
-          </div>
-          <% }) %>
-
-            <% } %>
+  <div class="bloque-requerimiento">
+    <table class="tabla-resumen">
+      <thead>
+        <tr>
+          <th colspan="3">RECOMENDACIONES GENERALES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="3"><%= data.observaciones || '—' %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

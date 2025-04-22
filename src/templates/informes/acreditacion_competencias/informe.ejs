@@ -12,17 +12,22 @@
 
   <div class="wrapper">
     <!-- Portada -->
-    <%- include('./partials/portada.ejs') %>
+    <%- include('./partials/portada.ejs', { data: datos.base_informe }) %>
       <div class="div-margenes">
-        <%- include('./partials/requerimientos', { title: "Habilitación" , data: datos.habilitacion }) %>
-          <%- include('./partials/requerimientos', { title: "Procedimiento General" , data: datos.procedimiento_general
-            }) %>
 
-            <%- include('./partials/acreditaciones.ejs', { title: "Acreditaciones" , data: datos.acreditacion_competencias }) %>
+        <%- include('./partials/base_informe', { base_informe: datos.base_informe }) %>
+        <%- include('./partials/introduccion', { data: datos.base_informe }) %>
 
-            <%- include('./partials/base_informe', { base_informe: datos.base_informe }) %>
-              <%- include('./partials/requerimientos', { title: "Gestión de Control" , data: datos.gestion_de_control })
-                %>
+          <%- include('./partials/requerimientos', { title: "Habilitación" , data: datos.habilitacion }) %>
+            <%- include('./partials/requerimientos', { title: "Procedimiento General" , data:
+              datos.procedimiento_general }) %>
+
+              <%- include('./partials/acreditaciones.ejs', { title: "Acreditaciones" , data:
+                datos.acreditacion_competencias }) %>
+                <%- include('./partials/habitos.ejs', { title: "Habitos" , data: datos.habitos_operacionales }) %>
+
+                  <%- include('./partials/requerimientos', { title: "Gestión de Control" , data:
+                    datos.gestion_de_control }) %>
 
       </div>
   </div>
