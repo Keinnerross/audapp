@@ -521,6 +521,7 @@ export interface ApiInformesAcreditacionDeCompetenciaInformesAcreditacionDeCompe
       false
     >;
     publishedAt: Schema.Attribute.DateTime;
+    resumen_final: Schema.Attribute.Text;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

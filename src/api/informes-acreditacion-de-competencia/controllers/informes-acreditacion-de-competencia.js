@@ -202,9 +202,6 @@ module.exports = createCoreController(
         // habitos_operacionales[].fecha_acreditacion_formateada
         // habitos_operacionales[].fecha_vigencia_licencia_interna_formateada
 
-
-
-
         // 4.4 Reemplazar IDs de archivos y media por URLs absolutas de Strapi
 
         const baseURL = strapi.config.get('server.url') || 'http://localhost:1337';
@@ -410,6 +407,8 @@ module.exports = createCoreController(
               conclusion_recomendacion: 'Ninguna'
             }
           ],
+
+          resumen_final: 'Resumen del informe de acreditación de competencias, descripción de los resultados obtenidos en la evaluación de competencias y hábitos operacionales del operador.',
         };
 
 

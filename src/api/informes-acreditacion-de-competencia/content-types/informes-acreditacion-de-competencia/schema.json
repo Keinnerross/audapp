@@ -42,6 +42,9 @@
       "components": [
         "informe-acreditacion.habitos-operacionales"
       ]
+    },
+    "resumen_final": {
+      "type": "text"
     }
   }
 }

@@ -5,9 +5,10 @@
   <meta charset="UTF-8" />
   <title>Informe de Acreditación</title>
   <%- include('../styles/styles-portada.ejs') %>
-  <%- include('../styles/styles-acreditaciones.ejs') %>
-  <%- include('../styles/global.ejs') %>
+    <%- include('../styles/styles-acreditaciones.ejs') %>
+      <%- include('../styles/global.ejs') %>
 </head>
+
 <body>
   <!-- ✅ PORTADA SIN MÁRGENES -->
   <div class="pagina-portada">
@@ -19,29 +20,38 @@
     <div class="div-margenes">
 
       <%- include('./partials/base_informe', { base_informe: datos.base_informe }) %>
-      <%- include('./partials/introduccion', { data: datos.base_informe }) %>
+        <%- include('./partials/introduccion', { data: datos.base_informe }) %>
 
-      <div class="bloque-seccion-completa">
-        <%- include('./partials/requerimientos', { title: "Habilitación", data: datos.habilitacion }) %>
-      </div>
+          <div class="bloque-seccion-completa">
+            <%- include('./partials/requerimientos', { title: "Habilitación" , data: datos.habilitacion }) %>
+          </div>
 
-      <div class="bloque-seccion-completa">
-        <%- include('./partials/requerimientos', { title: "Procedimiento General", data: datos.procedimiento_general }) %>
-      </div>
+          <div class="bloque-seccion-completa">
+            <%- include('./partials/requerimientos', { title: "Procedimiento General" , data:
+              datos.procedimiento_general }) %>
+          </div>
 
-      <div class="bloque-seccion-completa">
-        <%- include('./partials/acreditaciones.ejs', { title: "Acreditaciones", data: datos.acreditacion_competencias }) %>
-      </div>
+          <div class="bloque-seccion-completa">
+            <%- include('./partials/acreditaciones.ejs', { title: "Acreditaciones" , data:
+              datos.acreditacion_competencias }) %>
+          </div>
 
-      <!-- ✅ SALTO FORZADO PARA QUE HÁBITOS COMIENCE EN OTRA PÁGINA -->
-      <div style="page-break-before: always;"></div>
-      <div class="bloque-seccion-completa">
-        <%- include('./partials/habitos.ejs', { title: "Hábitos", data: datos.habitos_operacionales }) %>
-      </div>
+          <!-- ✅ SALTO FORZADO PARA QUE HÁBITOS COMIENCE EN OTRA PÁGINA -->
+          <div style="page-break-before: always;"></div>
 
-      <div class="bloque-seccion-completa">
-        <%- include('./partials/requerimientos', { title: "Gestión de Control", data: datos.gestion_de_control }) %>
-      </div>
+
+          <div class="bloque-seccion-completa">
+            <%- include('./partials/requerimientos', { title: "Gestión de Control" , data: datos.gestion_de_control })
+              %>
+          </div>
+
+          <div class="bloque-seccion-completa">
+            <%- include('./partials/habitos.ejs', { title: "Hábitos" , data: datos.habitos_operacionales }) %>
+          </div>
+
+          <div class="bloque-seccion-completa">
+            <%- include('./partials/resumen_final.ejs', { data: datos }) %>
+          </div>
 
     </div>
   </div>
